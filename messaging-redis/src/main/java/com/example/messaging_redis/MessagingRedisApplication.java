@@ -37,6 +37,9 @@ public class MessagingRedisApplication {
 	}
 
 	// メッセージを受信するためのアダプター
+	// これは container.addMessageListener に渡すLisnerである
+	// Listener自体は Receiver が担当するが、addMessageListenerに渡すためには MessageListener インタフェースを満たす必要がある
+	// MessageListenerAdapter は その I/Fを満たす。MessageListenerAdapter はそのようなケースのために存在する
 	@Bean
 	MessageListenerAdapter listenerAdapter(Receiver receiver) {
 		// ReceiverクラスのreceiveMessageメソッドを実行する
